@@ -1,48 +1,15 @@
 #include "printf.h"
 
-static char	*ptr_to_str(long long ptr);
-static char	*htoa(long long hex);
-static int	get_hex_len(long long n);
-
-int	printf_ptr(va_list valist, t_flags flags)
+static int	get_hex_len(long long n)
 {
-	char		*output;
-	long long	ptr;
+	int	i;
 
-	ptr = va_arg(valist, long long);
-	if (!ptr && (flags.precision >= 5 || flags.dot == 0))
-		output = ft_strdup("(nil)");
-	else if (!ptr)
-		output = ft_strdup("");
-	else
-		output = ptr_to_str(ptr);
-	if (flags.dot == 1)
-		output = pad_ptr(output, flags.precision + 2);
-	if (flags.flag == '\0')
-		output = pad_left(output, flags.width, ' ');
-	else if (flags.flag == '0')
-		output = pad_ptr(output, flags.width);
-	else if (flags.flag == '-')
-		output = pad_right(output, flags.width, ' ');
-	if (!output)
-		return (0);
-	g_chars_printed += putstr(output);
-	free(output);
-	return (1);
-}
-
-static char	*ptr_to_str(long long ptr)
-{
-	char	*ret;
-	char	*temp;
-
-	ret = ft_strdup("0x");
-	temp = htoa(ptr);
-	ft_strlcat(ret, temp, 16);
-	free(temp);
-	if (!ret)
-		return (0);
-	return (ret);
+	if (n == 0)
+		return (1);
+	i = 0;
+	while (ft_power(16, i) < (t_u64)n)
+		i++;
+	return (i);
 }
 
 static char	*htoa(long long hex)
@@ -72,14 +39,43 @@ static char	*htoa(long long hex)
 	return (ret);
 }
 
-static int	get_hex_len(long long n)
+static char	*ptr_to_str(long long ptr)
 {
-	int	i;
+	char	*ret;
+	char	*temp;
 
-	if (n == 0)
-		return (1);
-	i = 0;
-	while (ft_power(16, i) < (t_u64)n)
-		i++;
-	return (i);
+	ret = ft_strdup("0x");
+	temp = htoa(ptr);
+	ft_strlcat(ret, temp, 16);
+	free(temp);
+	if (!ret)
+		return (0);
+	return (ret);
+}
+
+int	printf_ptr(va_list valist, t_flags flags)
+{
+	char		*output;
+	long long	ptr;
+
+	ptr = va_arg(valist, long long);
+	if (!ptr && (flags.precision >= 5 || flags.dot == 0))
+		output = ft_strdup("(nil)");
+	else if (!ptr)
+		output = ft_strdup("");
+	else
+		output = ptr_to_str(ptr);
+	if (flags.dot == 1)
+		output = pad_ptr(output, flags.precision + 2);
+	if (flags.flag == '\0')
+		output = pad_left(output, flags.width, ' ');
+	else if (flags.flag == '0')
+		output = pad_ptr(output, flags.width);
+	else if (flags.flag == '-')
+		output = pad_right(output, flags.width, ' ');
+	if (!output)
+		return (0);
+	g_chars_printed += putstr(output);
+	free(output);
+	return (1);
 }

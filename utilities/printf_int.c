@@ -1,33 +1,5 @@
 #include "printf.h"
 
-static void	pad_negative(char *str);
-static char	*handle_shit(t_flags *flags, int *num, int *is_negative,
-				va_list valist);
-
-int	printf_int(va_list valist, t_flags flags)
-{
-	char	*output;
-	int		num;
-	int		is_negative;
-
-	output = handle_shit(&flags, &num, &is_negative, valist);
-	if (flags.dot == 1)
-		output = pad_left(output, flags.precision + is_negative, '0');
-	if (flags.flag == '\0')
-		output = pad_left(output, flags.width, ' ');
-	else if (flags.flag == '0')
-		output = pad_left(output, flags.width, '0');
-	else if (flags.flag == '-')
-		output = pad_right(output, flags.width, ' ');
-	if (!output)
-		return (0);
-	if (is_negative && (flags.flag == '0' || flags.dot))
-		pad_negative(output);
-	g_chars_printed += putstr(output);
-	free(output);
-	return (1);
-}
-
 static char	*handle_shit(t_flags *flags, int *num, int *is_negative,
 				va_list valist)
 {
@@ -72,4 +44,28 @@ static void	pad_negative(char *str)
 		}
 		i++;
 	}
+}
+
+int	printf_int(va_list valist, t_flags flags)
+{
+	char	*output;
+	int		num;
+	int		is_negative;
+
+	output = handle_shit(&flags, &num, &is_negative, valist);
+	if (flags.dot == 1)
+		output = pad_left(output, flags.precision + is_negative, '0');
+	if (flags.flag == '\0')
+		output = pad_left(output, flags.width, ' ');
+	else if (flags.flag == '0')
+		output = pad_left(output, flags.width, '0');
+	else if (flags.flag == '-')
+		output = pad_right(output, flags.width, ' ');
+	if (!output)
+		return (0);
+	if (is_negative && (flags.flag == '0' || flags.dot))
+		pad_negative(output);
+	g_chars_printed += putstr(output);
+	free(output);
+	return (1);
 }

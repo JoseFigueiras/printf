@@ -1,33 +1,15 @@
 #include "printf.h"
 
-static int	get_hex_len(long long n);
-static char	*htoa(long long hex);
-
-int	printf_HEX(va_list valist, t_flags flags)
+static int	get_hex_len(long long n)
 {
-	char		*output;
-	long long	num;
+	int	i;
 
-	if (flags.flag == '0' && flags.dot)
-		flags.flag = '\0';
-	num = va_arg(valist, long long);
-	if (flags.dot && !flags.precision && !num)
-		output = ft_strdup("");
-	else
-		output = htoa(num);
-	if (flags.dot == 1)
-		output = pad_left(output, flags.precision, '0');
-	if (flags.flag == '\0')
-		output = pad_left(output, flags.width, ' ');
-	else if (flags.flag == '0')
-		output = pad_left(output, flags.width, '0');
-	else if (flags.flag == '-')
-		output = pad_right(output, flags.width, ' ');
-	if (!output)
-		return (0);
-	g_chars_printed += putstr(output);
-	free(output);
-	return (1);
+	if (n == 0)
+		return (1);
+	i = 0;
+	while ((long long)ft_power(16, i) < n)
+		i++;
+	return (i);
 }
 
 static char	*htoa(long long hex)
@@ -57,14 +39,29 @@ static char	*htoa(long long hex)
 	return (ret);
 }
 
-static int	get_hex_len(long long n)
+int	printf_HEX(va_list valist, t_flags flags)
 {
-	int	i;
+	char		*output;
+	long long	num;
 
-	if (n == 0)
-		return (1);
-	i = 0;
-	while ((long long)ft_power(16, i) < n)
-		i++;
-	return (i);
+	if (flags.flag == '0' && flags.dot)
+		flags.flag = '\0';
+	num = va_arg(valist, long long);
+	if (flags.dot && !flags.precision && !num)
+		output = ft_strdup("");
+	else
+		output = htoa(num);
+	if (flags.dot == 1)
+		output = pad_left(output, flags.precision, '0');
+	if (flags.flag == '\0')
+		output = pad_left(output, flags.width, ' ');
+	else if (flags.flag == '0')
+		output = pad_left(output, flags.width, '0');
+	else if (flags.flag == '-')
+		output = pad_right(output, flags.width, ' ');
+	if (!output)
+		return (0);
+	g_chars_printed += putstr(output);
+	free(output);
+	return (1);
 }

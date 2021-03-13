@@ -1,33 +1,5 @@
 #include "printf.h"
 
-static char	*char_to_str(char c);
-static int	handle_null(t_flags flags);
-
-int	printf_char(va_list valist, t_flags flags)
-{
-	char	*output;
-	char	c;
-
-	c = va_arg(valist, int);
-	if (c == '\0')
-		return (handle_null(flags));
-	else
-		output = char_to_str(c);
-	if (flags.flag == '\0')
-		output = pad_left(output, flags.width, ' ');
-	else if (flags.flag == '0')
-		output = pad_left(output, flags.width, ' ');
-	else if (flags.flag == '-')
-		output = pad_right(output, flags.width, ' ');
-	if (flags.dot == 1)
-		output = pad_left(output, flags.width, ' ');
-	if (!output)
-		return (0);
-	g_chars_printed += putstr(output);
-	free(output);
-	return (1);
-}
-
 static char	*char_to_str(char c)
 {
 	char	*ret;
@@ -67,5 +39,30 @@ static int	handle_null(t_flags flags)
 		write(1, "\0", 1);
 		g_chars_printed++;
 	}
+	return (1);
+}
+
+int	printf_char(va_list valist, t_flags flags)
+{
+	char	*output;
+	char	c;
+
+	c = va_arg(valist, int);
+	if (c == '\0')
+		return (handle_null(flags));
+	else
+		output = char_to_str(c);
+	if (flags.flag == '\0')
+		output = pad_left(output, flags.width, ' ');
+	else if (flags.flag == '0')
+		output = pad_left(output, flags.width, ' ');
+	else if (flags.flag == '-')
+		output = pad_right(output, flags.width, ' ');
+	if (flags.dot == 1)
+		output = pad_left(output, flags.width, ' ');
+	if (!output)
+		return (0);
+	g_chars_printed += putstr(output);
+	free(output);
 	return (1);
 }

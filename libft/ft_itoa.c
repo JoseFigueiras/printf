@@ -1,33 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/10 19:10:43 by jfigueir          #+#    #+#             */
+/*   Updated: 2021/03/10 19:10:46 by jfigueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdio.h>
-
-static int	get_num_len(int n);
-static void	fill_str(char *str, int num, int num_len, int is_negative);
-
-char	*ft_itoa(int n)
-{
-	int		num_len;
-	int		is_negative;
-	char	*ret;
-
-	if (n == 0)
-		return (ft_strdup("0"));
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n < 0)
-	{
-		is_negative = 1;
-		n *= -1;
-	}
-	else
-		is_negative = 0;
-	num_len = get_num_len(n);
-	ret = malloc(is_negative + num_len + 1);
-	if (!ret)
-		return (0);
-	fill_str(ret, n, num_len, is_negative);
-	return (ret);
-}
 
 static int	get_num_len(int n)
 {
@@ -57,4 +41,29 @@ static void	fill_str(char *str, int num, int num_len, int is_negative)
 	if (is_negative)
 		str[0] = '-';
 	str[is_negative + num_len] = '\0';
+}
+
+char		*ft_itoa(int n)
+{
+	int		num_len;
+	int		is_negative;
+	char	*ret;
+
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n < 0)
+	{
+		is_negative = 1;
+		n *= -1;
+	}
+	else
+		is_negative = 0;
+	num_len = get_num_len(n);
+	ret = malloc(is_negative + num_len + 1);
+	if (!ret)
+		return (0);
+	fill_str(ret, n, num_len, is_negative);
+	return (ret);
 }

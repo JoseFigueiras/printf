@@ -54,7 +54,7 @@ static int	print_stuff(va_list valist, t_flags flags)
 	else if (flags.type == 'x')
 		return (printf_hex(valist, flags));
 	else if (flags.type == 'X')
-		return (printf_HEX(valist, flags));
+		return (printf_hexa(valist, flags));
 	else if (flags.type == '%')
 		return (printf_percent());
 	return (0);

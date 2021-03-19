@@ -46,7 +46,7 @@ int							printf_ptr(va_list valist, t_flags flags);
 int							printf_int(va_list valist, t_flags flags);
 int							printf_uint(va_list valist, t_flags flags);
 int							printf_hex(va_list valist, t_flags flags);
-int							printf_HEX(va_list valist, t_flags flags);
+int							printf_hexa(va_list valist, t_flags flags);
 int							printf_percent(void);
 
 #endif

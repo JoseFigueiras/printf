@@ -4,6 +4,7 @@ int	printf_percent(va_list valist, t_flags flags)
 {
 	char	*output;
 
+	(void)valist;
 	output = ft_strdup('%');
 	if (flags.flag == '\0')
 		output = pad_left(output, flags.width, ' ');

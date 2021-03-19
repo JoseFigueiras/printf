@@ -59,8 +59,8 @@ int	printf_ptr(va_list valist, t_flags flags)
 	long long	ptr;
 
 	ptr = va_arg(valist, long long);
-	if (!ptr && (flags.precision >= 5 || flags.dot == 0))
-		output = ft_strdup("(nil)");
+	if (!ptr)
+		output = ft_strdup("0x0");
 	else if (!ptr)
 		output = ft_strdup("");
 	else

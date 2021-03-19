@@ -6,7 +6,7 @@ int	printf_str(va_list valist, t_flags flags)
 	char	*temp;
 
 	temp = va_arg(valist, char*);
-	if (!temp && (flags.precision >= 6 || flags.dot == 0))
+	if (!temp)
 		output = ft_strdup("(null)");
 	else if (!temp)
 		output = ft_strdup("");

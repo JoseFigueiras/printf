@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/20 16:44:49 by jfigueir          #+#    #+#             */
+/*   Updated: 2021/03/20 16:44:50 by jfigueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 #include <stdio.h>
 
-int	g_chars_printed;
+int			g_chars_printed;
 
 static int	fill_flags(t_flags *flags, char *str)
 {
@@ -10,7 +22,8 @@ static int	fill_flags(t_flags *flags, char *str)
 		flags->flag = '\0' + 0 * *str++;
 	else if (*str == '0' || *str == '-')
 		flags->flag = *str++;
-	if ((*str == '0' && flags->flag == '-') || (*str == '-' && flags->flag == '0'))
+	if ((*str == '0' && flags->flag == '-') || (*str == '-' &&
+				flags->flag == '0'))
 		flags->flag = '-' + (0 * *str++);
 	if (*str == '*')
 		flags->width = -1 + (0 * *str++);
@@ -106,7 +119,7 @@ static int	parse_str(char *format, va_list valist)
 	return (1);
 }
 
-int	ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list		valist;
 

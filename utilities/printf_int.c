@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_int.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/20 16:47:54 by jfigueir          #+#    #+#             */
+/*   Updated: 2021/03/20 16:48:45 by jfigueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 static char	*handle_shit(t_flags *flags, int *num, int *is_negative,
@@ -46,7 +58,7 @@ static void	pad_negative(char *str)
 	}
 }
 
-int	printf_int(va_list valist, t_flags flags)
+int			printf_int(va_list valist, t_flags flags)
 {
 	char	*output;
 	int		num;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_ptr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/20 16:46:33 by jfigueir          #+#    #+#             */
+/*   Updated: 2021/03/20 16:49:14 by jfigueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 static int	get_hex_len(long long n)
@@ -53,7 +65,7 @@ static char	*ptr_to_str(long long ptr)
 	return (ret);
 }
 
-int	printf_ptr(va_list valist, t_flags flags)
+int			printf_ptr(va_list valist, t_flags flags)
 {
 	char		*output;
 	long long	ptr;

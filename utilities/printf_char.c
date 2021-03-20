@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_char.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/20 16:46:45 by jfigueir          #+#    #+#             */
+/*   Updated: 2021/03/20 16:46:56 by jfigueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 static char	*char_to_str(char c)
@@ -42,7 +54,7 @@ static int	handle_null(t_flags flags)
 	return (1);
 }
 
-int	printf_char(va_list valist, t_flags flags)
+int			printf_char(va_list valist, t_flags flags)
 {
 	char	*output;
 	char	c;

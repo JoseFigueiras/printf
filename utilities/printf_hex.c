@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_hex.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/20 16:47:06 by jfigueir          #+#    #+#             */
+/*   Updated: 2021/03/20 16:47:15 by jfigueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 static int	get_hex_len(long long n)
@@ -39,7 +51,7 @@ static char	*htoa(long long hex)
 	return (ret);
 }
 
-int	printf_hex(va_list valist, t_flags flags)
+int			printf_hex(va_list valist, t_flags flags)
 {
 	char		*output;
 	long long	num;

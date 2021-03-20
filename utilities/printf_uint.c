@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_uint.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/20 16:48:03 by jfigueir          #+#    #+#             */
+/*   Updated: 2021/03/20 16:48:09 by jfigueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 static int	get_num_len(t_uint n)
@@ -34,7 +46,7 @@ static char	*utoa(t_u64 num)
 	return (ret);
 }
 
-int	printf_uint(va_list valist, t_flags flags)
+int			printf_uint(va_list valist, t_flags flags)
 {
 	char	*output;
 	t_uint	num;

@@ -39,7 +39,7 @@ static char	*htoa(long long hex)
 	return (ret);
 }
 
-int	printf_hex(va_list valist, t_flags flags)
+int	printf_hexa(va_list valist, t_flags flags)
 {
 	char		*output;
 	long long	num;

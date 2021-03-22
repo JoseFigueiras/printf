@@ -19,7 +19,7 @@ static int	get_hex_len(long long n)
 	if (n == 0)
 		return (1);
 	i = 0;
-	while ((long long)ft_power(16, i) < n)
+	while ((long long)ft_power(16, i) <= n)
 		i++;
 	return (i);
 }

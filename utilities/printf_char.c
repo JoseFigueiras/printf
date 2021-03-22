@@ -29,8 +29,36 @@ static char	*char_to_str(char c)
 	return (ret);
 }
 
+static int	handle_negative_null(t_flags flags)
+{
+	flags.width = abs(flags.width);
+	if (flags.flag == '-')
+	{
+		write(1, "\0", 1);
+		g_chars_printed++;
+		while (flags.width-- > 1)
+		{
+			write(1, " ", 1);
+			g_chars_printed++;
+		}
+	}
+	else
+	{
+		write(1, "\0", 1);
+		g_chars_printed++;
+		while (flags.width-- > 1)
+		{
+			write(1, " ", 1);
+			g_chars_printed++;
+		}
+	}
+	return (1);
+}
+
 static int	handle_null(t_flags flags)
 {
+	if (flags.width < 0)
+		return (handle_negative_null(flags));
 	if (flags.flag == '-')
 	{
 		write(1, "\0", 1);

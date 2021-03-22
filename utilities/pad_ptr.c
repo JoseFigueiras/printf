@@ -19,6 +19,7 @@ char	*pad_ptr(char *str, int final_len)
 
 	if (!str)
 		return (NULL);
+	final_len = abs(final_len);
 	if (final_len <= 14)
 		return (str);
 	ret = malloc(final_len + 1);

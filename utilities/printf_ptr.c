@@ -19,7 +19,7 @@ static int	get_hex_len(long long n)
 	if (n == 0)
 		return (1);
 	i = 0;
-	while (ft_power(16, i) < (t_u64)n)
+	while (ft_power(16, i) <= (t_u64)n)
 		i++;
 	return (i);
 }
@@ -73,8 +73,6 @@ int			printf_ptr(va_list valist, t_flags flags)
 	ptr = va_arg(valist, long long);
 	if (!ptr)
 		output = ft_strdup("0x0");
-	else if (!ptr)
-		output = ft_strdup("");
 	else
 		output = ptr_to_str(ptr);
 	if (flags.dot == 1)

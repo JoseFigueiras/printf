@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int			g_chars_printed;
 
@@ -53,7 +52,7 @@ static int	print_stuff(va_list valist, t_flags flags)
 			flags.width = abs(flags.width);
 	}
 	if (flags.precision == -1)
-		flags.precision = va_arg(valist, int);
+		flags.precision = abs(va_arg(valist, int));
 	if (flags.type == 'c')
 		return (printf_char(valist, flags));
 	else if (flags.type == 's')

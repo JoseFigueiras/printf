@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # define FLAGS "-0."
 # define CONVERSIONS "cspdiuxX%"

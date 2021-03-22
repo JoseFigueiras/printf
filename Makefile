@@ -13,7 +13,7 @@ all: $(OBJS)
 	ar rcs $(BIN) $(OBJS) 
 
 main: all
-	gcc $(FLAGS) main.c $(BIN) -o output
+	gcc main.c $(BIN) -o output
 
 %.o: %.c
 	gcc $(FLAGS) -c -I $(INCLUDES) $< -o $@

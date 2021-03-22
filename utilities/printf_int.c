@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static char	*handle_shit(t_flags *flags, int *num, int *is_negative,
 				va_list valist)

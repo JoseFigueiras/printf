@@ -3,7 +3,7 @@ LIBFT = libft.a
 FLAGS = -Wall -Wextra -Werror
 
 INCLUDES = .
-SRCS =	printf.c					\
+SRCS =	ft_printf.c					\
 		$(wildcard utilities/*.c)	\
 		$(wildcard libft/*.c)
 

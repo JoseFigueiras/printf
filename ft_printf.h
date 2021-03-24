@@ -6,7 +6,7 @@
 /*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 16:43:36 by jfigueir          #+#    #+#             */
-/*   Updated: 2021/03/20 16:43:37 by jfigueir         ###   ########.fr       */
+/*   Updated: 2021/03/24 18:05:31 by jfigueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 # define FLAGS "-0."
 # define CONVERSIONS "cspdiuxX%"

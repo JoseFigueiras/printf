@@ -6,7 +6,7 @@
 /*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 16:48:25 by jfigueir          #+#    #+#             */
-/*   Updated: 2021/03/20 16:48:26 by jfigueir         ###   ########.fr       */
+/*   Updated: 2021/03/24 19:05:18 by jfigueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int	printf_str(va_list valist, t_flags flags)
 
 	temp = va_arg(valist, char*);
 	if (!temp)
+	{
 		output = ft_strdup("(null)");
-	else if (!temp)
-		output = ft_strdup("");
+		if (flags.precision <= 0 && !flags.width)
+			flags.dot = 0;
+	}
 	else
 		output = ft_strdup(temp);
 	if (flags.dot == 1)

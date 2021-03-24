@@ -6,7 +6,7 @@
 /*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 16:44:49 by jfigueir          #+#    #+#             */
-/*   Updated: 2021/03/20 16:44:50 by jfigueir         ###   ########.fr       */
+/*   Updated: 2021/03/24 19:04:10 by jfigueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	print_stuff(va_list valist, t_flags flags)
 			flags.width = abs(flags.width);
 	}
 	if (flags.precision == -1)
-		flags.precision = abs(va_arg(valist, int));
+		flags.precision = va_arg(valist, int);
 	if (flags.type == 'c')
 		return (printf_char(valist, flags));
 	else if (flags.type == 's')

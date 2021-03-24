@@ -6,15 +6,15 @@
 /*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 16:46:33 by jfigueir          #+#    #+#             */
-/*   Updated: 2021/03/24 18:06:50 by jfigueir         ###   ########.fr       */
+/*   Updated: 2021/03/24 20:22:21 by jfigueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_hex_len(long long n)
+static unsigned long	get_hex_len(unsigned long n)
 {
-	int	i;
+	unsigned int	i;
 
 	if (n == 0)
 		return (1);
@@ -24,12 +24,12 @@ static int	get_hex_len(long long n)
 	return (i);
 }
 
-static char	*htoa(long long hex)
+static char				*htoa(unsigned long hex)
 {
-	int		hex_len;
-	char	*ret;
-	char	*hexadecimals;
-	int		remainder;
+	unsigned long	hex_len;
+	char			*ret;
+	char			*hexadecimals;
+	unsigned long	remainder;
 
 	if (hex == 0)
 		return (ft_strdup("0"));
@@ -51,28 +51,34 @@ static char	*htoa(long long hex)
 	return (ret);
 }
 
-static char	*ptr_to_str(long long ptr)
+static char				*ptr_to_str(unsigned long ptr)
 {
 	char	*ret;
 	char	*temp;
 
 	ret = ft_strdup("0x");
 	temp = htoa(ptr);
-	ft_strlcat(ret, temp, 16);
+	ft_strlcat(ret, temp, 15);
 	free(temp);
 	if (!ret)
 		return (0);
 	return (ret);
 }
 
-int			printf_ptr(va_list valist, t_flags flags)
+int						printf_ptr(va_list valist, t_flags flags)
 {
-	char		*output;
-	long long	ptr;
+	char			*output;
+	unsigned long	ptr;
 
-	ptr = va_arg(valist, long long);
+	ptr = va_arg(valist, unsigned long);
 	if (!ptr)
 		output = ft_strdup("0x0");
+	else if ((long)ptr == LONG_MAX)
+		output = ft_strdup("0x7fffffffffffffff");
+	else if ((long)ptr == LONG_MIN)
+		output = ft_strdup("0x8000000000000000");
+	else if (ptr == ULONG_MAX)
+		output = ft_strdup("0xffffffffffffffff");
 	else
 		output = ptr_to_str(ptr);
 	if (flags.dot == 1)

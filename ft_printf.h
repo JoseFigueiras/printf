@@ -6,12 +6,12 @@
 /*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 16:43:36 by jfigueir          #+#    #+#             */
-/*   Updated: 2021/03/24 18:05:31 by jfigueir         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:16:44 by jfigueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include "libft.h"
 # include <stdarg.h>

@@ -6,7 +6,7 @@
 /*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 16:46:33 by jfigueir          #+#    #+#             */
-/*   Updated: 2021/03/24 20:22:21 by jfigueir         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:22:41 by jfigueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,20 @@ static char				*ptr_to_str(unsigned long ptr)
 	return (ret);
 }
 
+static char				*handle_special(unsigned long ptr)
+{
+	char	*output;
+
+	output = NULL;
+	if ((long)ptr == LONG_MAX)
+		output = ft_strdup("0x7fffffffffffffff");
+	else if ((long)ptr == LONG_MIN)
+		output = ft_strdup("0x8000000000000000");
+	else if (ptr == ULONG_MAX)
+		output = ft_strdup("0xffffffffffffffff");
+	return (output);
+}
+
 int						printf_ptr(va_list valist, t_flags flags)
 {
 	char			*output;
@@ -73,12 +87,9 @@ int						printf_ptr(va_list valist, t_flags flags)
 	ptr = va_arg(valist, unsigned long);
 	if (!ptr)
 		output = ft_strdup("0x0");
-	else if ((long)ptr == LONG_MAX)
-		output = ft_strdup("0x7fffffffffffffff");
-	else if ((long)ptr == LONG_MIN)
-		output = ft_strdup("0x8000000000000000");
-	else if (ptr == ULONG_MAX)
-		output = ft_strdup("0xffffffffffffffff");
+	else if ((long)ptr == LONG_MAX || (long)ptr == LONG_MIN
+				|| ptr == ULONG_MAX)
+		output = handle_special(ptr);
 	else
 		output = ptr_to_str(ptr);
 	if (flags.dot == 1)

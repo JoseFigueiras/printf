@@ -6,7 +6,7 @@
 /*   By: jfigueir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 16:48:03 by jfigueir          #+#    #+#             */
-/*   Updated: 2021/03/24 18:25:26 by jfigueir         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:23:49 by jfigueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*utoa(t_u64 num)
 	int		remainder;
 
 	if (num == 0)
-		return(ft_strdup("0"));
+		return (ft_strdup("0"));
 	num_len = get_num_len(num);
 	ret = malloc(num_len + 1);
 	if (!ret)
